@@ -1,0 +1,22 @@
+{
+  "name": "scanning_for_meaning",
+  "version": "1.0.0",
+  "description": "backend to my scanning for meaning art piece ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wikipedia",
+    "art",
+    "scanning"
+  ],
+  "author": "Travis Shears",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.1",
+    "nedb": "^1.8.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
