@@ -4,7 +4,7 @@
   "description": "backend to my scanning for meaning art piece ",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [
     "wikipedia",
@@ -14,9 +14,13 @@
   "author": "Travis Shears",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.1",
-    "nedb": "^1.8.0",
+    "jimp": "^0.2.28",
+    "mysql": "^2.15.0",
     "request": "^2.83.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "socket.io": "^2.0.3"
   }
 }
+

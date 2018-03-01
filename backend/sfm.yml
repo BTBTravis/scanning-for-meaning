@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  db:
+    image: mysql
+    container_name: db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=albi389ghws9g7gh
+      - MYSQL_DATABASE=scanning_for_meaning
+      - MYSQL_USER=sfm
+      - MYSQL_PASSWORD=f1f5e5fe8e8h8i8o8gf8we4w
+    # publish mysql server ports to access
+    # from outside of container with: mysql -h localhost -P 3306 --protocol=tcp -u directus -p
+    # ports:
+    #   - "8806:3306"
+    # If you need to specify a persistent volume for mysql
+    volumes:
+      - "sfm:/var/lib/mysql"
+    networks:
+      - sfm
+
+  scanning_for_meaning:
+    image: btbtravis/scanning_for_meaning:latest
+    container_name: scanning_for_meaning
+    restart: always
+    # publish mysql server ports to access
+    # from outside of container with: mysql -h localhost -P 3306 --protocol=tcp -u directus -p
+    ports:
+      - "3001:3001"
+    networks:
+      - sfm
+    depends_on:
+      - db
+
+volumes:
+  sfm:
+    # If you want to define externally, uncomment and adjust as needed
+    # external:
+    #   name: sfm
+
+networks:
+  sfm:
+    external:
+      name: sfm
+
