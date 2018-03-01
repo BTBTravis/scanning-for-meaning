@@ -1,0 +1,250 @@
+body,html{
+  margin: 0;
+  padding: 0;
+}
+body{
+  overflow: hidden;
+}
+
+.wrapper{
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+*{
+  font-family: 'Pontano Sans', sans-serif;
+}
+.title{
+  font-size: 25px;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  box-sizing: border-box;
+  /*padding-top: 112px;*/
+  padding-top: 6vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.punch_line{
+  padding-bottom: 6vh;
+}
+.punch_line div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.punch_line p{
+  font-size: 30px;
+  display: inline;
+}
+.punch_line input{
+  margin: 15px;
+  width: 253px;
+  height: 54px;
+  border: 1px solid #333;
+  font-size: 25px;
+  font-family: 'Pontano Sans', sans-serif;
+  font-weight: 300;
+  padding: 0 20px;
+}
+/*GRID*/
+.app_body{
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 62px 1fr 62px 1fr;
+  grid-template-rows: 1fr 110px;
+  grid-row-gap: 0px;
+  height: 100%;
+  /*align-items: end;*/
+}
+.history, .feed, .scan{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /*display: flex;
+  align-items: flex-end;*/
+}
+.history{
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+.history_toggle{
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+}
+.feed{
+  grid-column: 2 / span 3;
+  grid-row: 1 / span 1;
+}
+.feed_toggle{
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
+}
+.scan{
+  grid-column: 5 / span 1;
+  grid-row: 1 / span 1;
+}
+.scan_toggle{
+  grid-column: 5 / span 1;
+  grid-row: 2 / span 1;
+}
+*[class*='toggle']{
+  border-top: 1px solid #333;
+  cursor: pointer;
+}
+*[class*='toggle'] a{
+  /*padding: 5px 0;*/
+  display: block;
+}
+*[class*='toggle'] p{
+  display: inline-block;
+  position: relative;
+}
+*[class*='toggle'].open p::after{
+  position: absolute;
+  top: 50%;
+  left: -25%;
+  content: '';
+  border-top: 2px solid red;
+  width: 150%;
+}
+
+.panel{
+  height:0px;
+  overflow: hidden;
+  transition: height 1s;
+}
+
+.history{
+  max-height: 100%;
+  position: relative;
+}
+.history .panel ul{
+  list-style: none;
+  position: absolute;
+  top: 100vh; bottom: 0; left: 0; right: 0;
+  overflow: auto;
+  overflow-y: scroll;
+  transition: top 1s;
+}
+.history .panel.open ul{
+  top: 50px;
+}
+
+.history li{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+.history li p {
+  text-align: left;
+}
+.history img{
+  border: 2px solid red;
+  max-width: 103px;
+}
+
+/*
+ *  STYLE 3
+ */
+
+.history .panel ul::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.history .panel ul::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: #F5F5F5;
+}
+
+.history .panel ul::-webkit-scrollbar-thumb
+{
+	background-color: red;
+}
+
+
+
+
+
+
+.scan .panel{
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+.scan img{
+  max-width: 100%;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+.spinner i{
+  font-size: 25px;
+}
+
+.feed .panel{
+
+  display: flex;
+  align-items: center;
+}
+.panel.open{
+  height: 100%;
+  padding-bottom: 25%;
+}
+.feed .canvas_warpper {
+    background-color: red;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative; /* If you want text inside of it */
+}
+.feed .canvas_warpper.fullscreen {
+    position: inherit; /* If you want text inside of it */
+}
+
+/* If you want text inside of the container */
+.feed canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fullscreen_btn{
+  display: none;
+  position: absolute;
+  z-index: 999;
+  bottom: 0;
+  right: 0;
+  font-size: 25px;
+  /*transform: rotate(135deg);*/
+  transition: scale .5s;
+  padding: 15px;
+  cursor: pointer;
+}
+.canvas_warpper.fullscreen .fullscreen_btn{
+  font-size: 50px;
+  padding: 30px;
+}
+.fullscreen_btn:hover{
+  transform: scale(1.5);
+}
+.feed:hover .fullscreen_btn {
+  display: block;
+}
+.temp_hide{
+  display: none;
+}
